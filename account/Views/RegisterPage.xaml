@@ -13,9 +13,6 @@
 
             <Label Text="密碼" VerticalOptions="Center" Grid.Row="2" Grid.Column="0"/>
             <Entry x:Name="UPwdEntry" Placeholder="輸入密碼" IsPassword="True" Grid.Row="2" Grid.Column="1"/>
-
-            <Label Text="確認密碼" VerticalOptions="Center" Grid.Row="3" Grid.Column="0"/>
-            <Entry x:Name="UPwd2Entry" Placeholder="再次輸入密碼" IsPassword="True" Grid.Row="3" Grid.Column="1"/>
         </Grid>
 
         <Button Text="註冊" Clicked="Register_Clicked"/>

@@ -38,9 +38,10 @@ public partial class LoginPage : ContentPage
                 .OnceAsync<Register>();
 
             bool success = false;
+            Register loginUser = null;
             if (user != null)
             {
-                Register loginUser = user.First().Object;
+                loginUser = user.First().Object;
                 if (loginUser.UPwd == UPwd)
                 {
                     success = true;
@@ -51,6 +52,13 @@ public partial class LoginPage : ContentPage
 
             if (success)
             {
+                Preferences.Set("Key", user.First().Key);
+                Preferences.Set("UID", UID);
+                Preferences.Set("UPwd", loginUser.UPwd);
+                Preferences.Set("UName", loginUser.UName);
+                Preferences.Set("UScore", loginUser.UScore);
+                Preferences.Set("UPoint", loginUser.UPoint);
+                Preferences.Set("ULevel", loginUser.ULevel);
                 await DisplayAlert("成功", "登入成功", "確定");
                 await Shell.Current.GoToAsync("HomePage");
                 // 這裡可以導航到主頁面
@@ -65,13 +73,4 @@ public partial class LoginPage : ContentPage
             await DisplayAlert("錯誤", $"登入失敗: {ex.Message}", "確定");
         }
     }
-
-
-    public class Info
-    {
-        public string? Name { get; set; }
-        public string? Password { get; set; }
-    }
-
-
 }

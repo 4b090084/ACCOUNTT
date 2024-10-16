@@ -21,7 +21,7 @@ namespace account.Models
             }
         }
 
-        public int Score { get; private set; }
+        public int Score { get; set; }
 
         private ScoreManager()
         {
@@ -31,6 +31,11 @@ namespace account.Models
         public void AddScore(int points)
         {
             Score += points;
+        }
+
+        public void DeductScore(int points)
+        {
+            Score = Math.Max(0, Score - points);
         }
     }
 }

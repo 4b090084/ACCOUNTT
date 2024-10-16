@@ -26,6 +26,10 @@ namespace account
             //設定需要使用資料庫連線的頁面
             builder.Services.AddSingleton<RegisterPage>();
             builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<AddAccountingPage>();
+            builder.Services.AddSingleton<PetMainPage>();
+            builder.Services.AddSingleton<ShopPage>();
+            builder.Services.AddSingleton<FoodPage>();
             //builder.Services.AddSingleton<EditNotePage>();
 
             return builder.Build();

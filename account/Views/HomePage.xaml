@@ -20,19 +20,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-      
-            <Button Grid.Column="0" 
-                    Text="☰"
-                    FontSize="24"
-                    WidthRequest="60"
-                    HeightRequest="60"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Start"
-                    Margin="10,0,0,0"
-                    BackgroundColor="Transparent" 
-                    Clicked="listClicked"/>
-
-
+   
             <Label Grid.Column="1"
                    Text="雞帳專家"
                    FontSize="24"
@@ -41,6 +29,7 @@
                    HorizontalOptions="Center" />
 
             <Label Grid.Column="2"
+                   x:Name="txtUName"
                    Text="顯示當前帳號"
                    FontSize="16"
                    VerticalOptions="Center"

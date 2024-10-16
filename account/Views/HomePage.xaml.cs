@@ -7,36 +7,10 @@ public partial class HomePage : ContentPage
 	public HomePage()
 	{
 		InitializeComponent();
-	}
 
-    private async void listClicked(object sender, EventArgs e)
-    {
-        {
-            var action = await DisplayActionSheet(
-                "功能列表",
-                "取消",
-                null,
-                "首頁",
-                "月度報告",
-                "年度報告"
-                );
+        string UName = Preferences.Get("UName", "沒有登入姓名");
+        txtUName.Text = UName;
 
-            switch (action)
-            {
-                case "首頁":
-                    // 已經在首頁，不需要操作
-                    break;
-                case "月度報告":
-                    await Navigation.PushAsync(new PetMainPage());
-                    break;
-                case "年度報告":
-                    await Navigation.PushAsync(new PetMainPage());
-                    break;
-                case "預算設置":
-                    await Navigation.PushAsync(new PetMainPage());
-                    break;
-            }
-        }
     }
 
     private void MonthlyExpenseClicked(object sender, EventArgs e)

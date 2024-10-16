@@ -30,19 +30,13 @@ public partial class RegisterPage : ContentPage
             return;
         }
 
-        //if (UPwd != UPwd2)
-        //{
-        //    await DisplayAlert("錯誤", "兩次輸入的密碼不一致", "確定");
-        //    return;
-        //}
-
         try
         {
             var existingUser = await _firebaseClient
                 .Child("Users")
                 .OrderBy("UID")
                 .EqualTo(UID)
-                .OnceAsync<Info>();
+                .OnceAsync<Register>();
 
             if (existingUser.Any())
             {
@@ -55,7 +49,9 @@ public partial class RegisterPage : ContentPage
                 UID = UIDEntry.Text,
                 UName = UNameEntry.Text,
                 UPwd = UPwdEntry.Text,
-                //UPwd2 =UPwd2Entry.Text
+                UScore = 0,
+                UPoint = 0,
+                ULevel = 0,
             });
 
             await DisplayAlert("成功", "註冊成功", "確定");
@@ -68,10 +64,5 @@ public partial class RegisterPage : ContentPage
 
 
     }
-    public class Info
-    {
-        public string? Name { get; set; }
-        public string? Username { get; set; }
-        public string? Password { get; set; }
-    }
+  
 }

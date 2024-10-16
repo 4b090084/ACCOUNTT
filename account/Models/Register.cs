@@ -8,9 +8,15 @@ namespace account.Models
 {
     class Register
     {
-        public string UID { get; internal set; }
-        public string UName { get; internal set; }
-        public string UPwd { get; internal set; }
-        public string UPwd2 { get; internal set; }
+        public string Key { get; set; }
+        public string UID { get; set; }
+        public string UName { get; set; }
+        public string UPwd { get; set; }
+
+        public int UScore { get; set; }
+
+        public int UPoint { get; set; }
+
+        public int ULevel { get; set; }
     }
 }

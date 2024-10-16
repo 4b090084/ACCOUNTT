@@ -15,14 +15,15 @@
     <ShellContent Title="萌寵介面"
                           Icon="cick.png"
                           ContentTemplate="{DataTemplate views:PetMainPage}"/>
+    <ShellContent Title="記帳首頁"
+                         Icon="pencil.png"
+                         ContentTemplate="{DataTemplate views:HomePage}" />
     <ShellContent Title="財務報表"
                           Icon="money.png"
                           ContentTemplate="{DataTemplate views:FinancePage}"/>
     <ShellContent Title="功能設定"
                           Icon="set.png"
                           ContentTemplate="{DataTemplate views:SetPage}"/>
-<!--<ShellContent Title="分類管理"
-                          Icon="mng.png"      
-                          ContentTemplate="{DataTemplate views:AddAccountingPage}"/>-->
+
 
 </Shell>

@@ -8,7 +8,7 @@ namespace account.Models
 {
     internal class Login
     {
-        public string UID { get; internal set; }
-        public string UPwd { get; internal set; }
+        public string UID { get; set; }
+        public string UPwd { get; set; }
     }
 }

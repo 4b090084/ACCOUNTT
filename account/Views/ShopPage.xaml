@@ -23,9 +23,9 @@
                    VerticalOptions="Center" HorizontalOptions="Center" />
             <Image x:Name="stickImage" Source="stick.png" Grid.Row="1" Grid.Column="0" 
                    VerticalOptions="Center" HorizontalOptions="Center" />
-            <Image x:Name="wreathImage" Source="wreath.png" Grid.Row="1" Grid.Column="1" 
+            <Image x:Name="witchHatImage" Source="witchhat.png" Grid.Row="1" Grid.Column="1" 
                    VerticalOptions="Center" HorizontalOptions="Center" />
-            <Image x:Name="witchHatImage" Source="witchhat.png" Grid.Row="1" Grid.Column="2" 
+            <Image x:Name="wreathImage" Source="yellowhat.png" Grid.Row="1" Grid.Column="2" 
                    VerticalOptions="Center" HorizontalOptions="Center" />
         </Grid>
     </VerticalStackLayout>

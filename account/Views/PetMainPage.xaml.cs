@@ -9,27 +9,25 @@ public partial class PetMainPage : ContentPage
 {
     private readonly FirebaseClient _firebaseClient;
     public static object Instance { get;  set; }
-    private string userId;
+    private string UID;
+    private int UScore, UPoint, ULevel;
+
     public PetMainPage(FirebaseClient firebaseClient)
 	{
         InitializeComponent();
+
         _firebaseClient = firebaseClient;
-        InitializeUserData();
+        UID = Preferences.Get("UID", "");
+        UScore = Preferences.Get("UScore", 0);
+        UPoint = Preferences.Get("UPoint", 0);
+        ULevel = Preferences.Get("ULevel", 0);
+
+        txtLevel.Text = "等级:"+ ULevel.ToString(); 
         UpdateAccessoryDisplay();
         UpdatePetImage();
     }
 
-    private async Task InitializeUserData()
-    {
-        // 從 LoginPage 獲取用戶 ID
-        userId = await SecureStorage.GetAsync("userId");
-        if (string.IsNullOrEmpty(userId))
-        {
-            // 如果沒有用戶 ID,可能需要處理登入邏輯
-            return;
-        }
-        await LoadUserDataFromFirebase();
-    }
+
 
     private async Task LoadUserDataFromFirebase()
     {
@@ -37,7 +35,7 @@ public partial class PetMainPage : ContentPage
         {
             var userData = await _firebaseClient
                 .Child("users")
-                .Child(userId)
+                .Child(UID)
                 .OnceSingleAsync<UserData>();
 
             if (userData != null)
@@ -73,7 +71,7 @@ public partial class PetMainPage : ContentPage
 
             await _firebaseClient
                 .Child("users")
-                .Child(userId)
+                .Child(UID)
                 .PutAsync(userData);
         }
         catch (Exception ex)
@@ -97,25 +95,25 @@ public partial class PetMainPage : ContentPage
         int currentScore = ScoreManager.Instance.Score;
 
         // 根據積分決定顯示的圖片
-        if (currentScore >= 1000)
+        if (currentScore >= 200)
         {
             PetImage.Source = "chicken.png";
             PetImage.WidthRequest = 150;  // 可以根據需要調整大小
             PetImage.HeightRequest = 150;
         }
-        else if (currentScore >= 700)
+        else if (currentScore >= 180)
         {
             PetImage.Source = "hat.png";
             PetImage.WidthRequest = 150;
             PetImage.HeightRequest = 150;
         }
-        else if (currentScore >= 400)
+        else if (currentScore >= 150)
         {
             PetImage.Source = "key.png";
             PetImage.WidthRequest = 150;
             PetImage.HeightRequest = 150;
         }
-        else if (currentScore >= 200)
+        else if (currentScore >= 100)
         {
             PetImage.Source = "yellowhat.png";
             PetImage.WidthRequest = 150;
@@ -178,12 +176,6 @@ public partial class PetMainPage : ContentPage
         // 保存裝飾品更改到 Firebase
         await SaveUserDataToFirebase();
     }
-
-    //protected override void OnAppearing()
-    //{
-    //    base.OnAppearing();
-    //    UpdateScoreDisplay();
-    //}
 
     private async void UpdateScoreDisplay()
     {

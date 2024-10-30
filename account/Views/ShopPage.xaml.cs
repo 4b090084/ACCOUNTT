@@ -9,8 +9,8 @@ public partial class ShopPage : ContentPage
     private Dictionary<string, int> itemPrices = new Dictionary<string, int>
         {
             { "hat.png", 100 },
-            { "greenhat.png", 200 },
-            { "witchhat.png", 150 },
+            { "greenhat.png", 150 },
+            { "witchhat.png", 200 },
             { "flower.png", 300 },
             { "stick.png", 400 },
             { "yellowhat.png", 450 }

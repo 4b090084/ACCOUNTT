@@ -10,5 +10,7 @@ namespace account
 
             MainPage = new AppShell();
         }
+
+        public static object Database { get; internal set; }
     }
 }

@@ -19,7 +19,7 @@
             <!-- 等级 -->
             <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                 <Image Source="level.png"  WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
-                <Label Text="等级" VerticalOptions="Center" />
+                <Label x:Name="txtLevel" Text="等级" VerticalOptions="Center" />
             </StackLayout>
             <!-- 狀態 -->
             <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
@@ -34,7 +34,7 @@
                 </Grid.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <Image Source="food.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" />
-                    <Label Text="餵養" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="餵養" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
                 </StackLayout>
             </Grid>
 
@@ -45,7 +45,7 @@
                 </Grid.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <Image Source="shop.png" WidthRequest="60" HeightRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
-                    <Label Text="商店" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    <Label Text="商店" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
                 </StackLayout>
             </Grid>
         </Grid>
@@ -55,8 +55,8 @@
             <!-- 基礎寵物圖片 -->
             <Image x:Name="PetImage" 
                    Source="egg.png" 
-                   WidthRequest="150" 
-                   HeightRequest="150" 
+                   WidthRequest="200" 
+                   HeightRequest="200" 
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
 
@@ -64,7 +64,7 @@
             <Image x:Name="AccessoryImage"
                    WidthRequest="100" 
                    HeightRequest="100"
-                   VerticalOptions="Center"  
+                   VerticalOptions="Start"  
                    HorizontalOptions="Center"
                    IsVisible="False">
                 <Image.GestureRecognizers>

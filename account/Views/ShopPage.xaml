@@ -8,25 +8,31 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
             <Image x:Name="hatImage" Source="hat.png" Grid.Row="0" Grid.Column="0" 
-                   VerticalOptions="Center" HorizontalOptions="Center" />
+                VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="$100" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" />
             <Image x:Name="flowerImage" Source="flower.png" Grid.Row="0" Grid.Column="1" 
-                   VerticalOptions="Center" HorizontalOptions="Center" />
+                VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="$300" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" />
             <Image x:Name="greenHatImage" Source="greenhat.png" Grid.Row="0" Grid.Column="2" 
-                   VerticalOptions="Center" HorizontalOptions="Center" />
-            <Image x:Name="stickImage" Source="stick.png" Grid.Row="1" Grid.Column="0" 
-                   VerticalOptions="Center" HorizontalOptions="Center" />
-            <Image x:Name="witchHatImage" Source="witchhat.png" Grid.Row="1" Grid.Column="1" 
-                   VerticalOptions="Center" HorizontalOptions="Center" />
-            <Image x:Name="wreathImage" Source="yellowhat.png" Grid.Row="1" Grid.Column="2" 
-                   VerticalOptions="Center" HorizontalOptions="Center" />
+                VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="$150" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Center" />
+            <Image x:Name="stickImage" Source="stick.png" Grid.Row="2" Grid.Column="0" 
+                VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="$400" Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="Center" />
+            <Image x:Name="witchHatImage" Source="witchhat.png" Grid.Row="2" Grid.Column="1" 
+                VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="$200" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center" />
+            <Image x:Name="wreathImage" Source="yellowhat.png" Grid.Row="2" Grid.Column="2" 
+                VerticalOptions="Center" HorizontalOptions="Center" />
+            <Label Text="$450" Grid.Row="2" Grid.Column="2" HorizontalTextAlignment="Center" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

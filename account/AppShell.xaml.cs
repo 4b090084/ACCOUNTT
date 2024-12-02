@@ -16,6 +16,7 @@ namespace account
             Routing.RegisterRoute(nameof(Views.HelpPage), typeof(Views.HelpPage));
             Routing.RegisterRoute(nameof(Views.HomePage), typeof(Views.HomePage));
             Routing.RegisterRoute(nameof(Views.AddAccountingPage), typeof(Views.AddAccountingPage));
+            Routing.RegisterRoute(nameof(Views.AllAccountingPage), typeof(Views.AllAccountingPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         }
     }

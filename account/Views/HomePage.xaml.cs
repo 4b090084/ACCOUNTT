@@ -44,4 +44,9 @@ public partial class HomePage : ContentPage
         // 跳轉到記帳頁面的邏輯
         await Shell.Current.GoToAsync("AddAccountingPage");
     }
+
+    private async void AllAccounting_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("AllAccountingPage");
+    }
 }

@@ -20,7 +20,16 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-   
+
+            <Button Grid.Column="0"
+                    Text="記帳紀錄"
+                    FontSize="18"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" 
+                    Clicked="AllAccounting_Clicked" />
+            
             <Label Grid.Column="1"
                    Text="雞帳專家"
                    FontSize="24"

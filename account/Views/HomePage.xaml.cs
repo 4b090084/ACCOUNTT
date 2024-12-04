@@ -49,4 +49,10 @@ public partial class HomePage : ContentPage
     {
         await Shell.Current.GoToAsync("AllAccountingPage");
     }
+
+    private async void LooutClicked(object sender, EventArgs e)
+    {
+        Preferences.Remove("UID");
+        await Shell.Current.GoToAsync("LoginPage");
+    }
 }

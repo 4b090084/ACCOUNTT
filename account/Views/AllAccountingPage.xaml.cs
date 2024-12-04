@@ -9,6 +9,8 @@ public partial class AllAccountingPage : ContentPage
 {
     //存放所有記事的資料集
     public ObservableCollection<AddAccounting> AccountingList { get; set; } = new ObservableCollection<AddAccounting>();
+    string UID = Preferences.Get("UID", "");
+
 
     //FIREBASE資料庫連線的變數
     private readonly FirebaseClient _firebaseClient;
@@ -32,7 +34,7 @@ public partial class AllAccountingPage : ContentPage
         AccountingList.Clear();
 
         //從Firebase下載所有清單
-        var result = await _firebaseClient.Child("AEvents").OnceAsync<AddAccounting>();
+        var result = await _firebaseClient.Child("AEvents/" + UID).OnceAsync<AddAccounting>();
 
         //逐筆將下載的記事加入記事資料集
         foreach (var item in result)

@@ -19,7 +19,19 @@ public partial class AppSetPage : ContentPage
 
     private void ChangeBackground_Clicked(object sender, EventArgs e)
     {
-
+        //string result = await DisplayActionSheet("選擇背景", "取消", null, "夜空", "太陽花", "幾何圖形");
+        //switch (result)
+        //{
+        //    case "夜空":
+        //        this.BackgroundImageSource = "sky.png";
+        //        break;
+        //    case "太陽花":
+        //        this.BackgroundImageSource = "sunflower.png";
+        //        break;
+        //    case "幾何圖形":
+        //        this.BackgroundImageSource = "orange.png";
+        //        break;
+        //}
     }
 
     private void Logout_Clicked(object sender, EventArgs e)

@@ -14,6 +14,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!-- 等级 -->
@@ -23,12 +24,17 @@
             </StackLayout>
             <!-- 狀態 -->
             <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
-                <Image Source="condition.png"  WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
-                <Label x:Name="ConditionEntry"   Text="積分:" VerticalOptions="Center" />
+                <Image Source="condition.png"  WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                <Label x:Name="txtScore"   Text="積分:" VerticalOptions="Center" />
+            </StackLayout>
+            <!-- 點數 -->
+            <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image Source="point.png"  WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                <Label x:Name="txtPoint"   Text="點數:" VerticalOptions="Center" />
             </StackLayout>
 
             <!-- 餵養 -->
-            <Grid Grid.Row="0" Grid.Column="2">
+            <Grid Grid.Row="0" Grid.Column="3">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="FeedButton_Click" />
                 </Grid.GestureRecognizers>
@@ -39,12 +45,12 @@
             </Grid>
 
             <!-- 商店 -->
-            <Grid Grid.Row="0" Grid.Column="3">
+            <Grid Grid.Row="0" Grid.Column="4">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ShopButton_Click" />
                 </Grid.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image Source="shop.png" WidthRequest="60" HeightRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="shop.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" />
                     <Label Text="商店" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
                 </StackLayout>
             </Grid>
@@ -62,8 +68,8 @@
 
             <!-- 裝飾品圖片 -->
             <Image x:Name="AccessoryImage"
-                   WidthRequest="100" 
-                   HeightRequest="100"
+                   WidthRequest="200" 
+                   HeightRequest="200"
                    VerticalOptions="Start"  
                    HorizontalOptions="Center"
                    IsVisible="False">
@@ -90,7 +96,7 @@
                     <TapGestureRecognizer Tapped="SettingsButton_Click" />
                 </Grid.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image Source="set.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="set.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" />
                 </StackLayout>
             </Grid>
 
@@ -100,7 +106,7 @@
                     <TapGestureRecognizer Tapped="HelpButton_Click" />
                 </Grid.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image Source="help.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="help.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" />
                 </StackLayout>
             </Grid>
 
@@ -110,7 +116,7 @@
                     <TapGestureRecognizer Tapped="HomeButton_Click" />
                 </Grid.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Image Source="home.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="home.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" />
                 </StackLayout>
             </Grid>
         </Grid>

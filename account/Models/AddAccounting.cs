@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace account.Models
 {
-    internal class AddAccounting
+    public class AddAccounting
     {
-        public string Type { get; set; }
-        public decimal Amount { get; set; }
+        public string? Type { get; set; }
+        public decimal? Amount { get; set; }
         public DateTime Date { get; set; }
-        public string Category { get; set; }
-        public string Note { get; set; }
+        public string? Category { get; set; }
+        public string? Note { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="account.Views.RegisterPage"
-             Title="雞帳專家-註冊">
+             Title="">
     <StackLayout Padding="20">
         <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*" Margin="0,0,0,20">
             <Label Text="名字" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>

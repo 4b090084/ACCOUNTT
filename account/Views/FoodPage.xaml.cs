@@ -26,8 +26,6 @@ public partial class FoodPage : ContentPage
         UID = Preferences.Get("UID", "");
         UPoint = Preferences.Get("UPoint", 0);   
         UScore = Preferences.Get("UScore", 0);
-        txtPoint.Text = "點數:" + UPoint.ToString();
-        txtScore.Text = "分數:" + UScore.ToString();
     }
 
     private void SetupEventHandlers()
@@ -124,9 +122,7 @@ public partial class FoodPage : ContentPage
                     //await FirebaseManager.UpdateUserData(currentUser);
                 }
 
-                // 更新畫面上的點數和分數顯示
-                txtPoint.Text = $"點數: {UPoint}";
-                txtScore.Text = $"分數: {UScore}";
+
 
                 // 顯示兌換成功訊息
                 await DisplayAlert("兌換成功", $"您已成功兌換 {itemName}\n獲得 {pointCost} 分", "確定");

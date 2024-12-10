@@ -2,15 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="account.Views.SetPage"
-             Title="SetPage">
+             Title="">
     <Grid RowDefinitions="*,*,*" ColumnDefinitions="*,*" Padding="20">
-        <!-- Row 0 -->
-        <Image Grid.Row="0" Grid.Column="0" Source="set.png" WidthRequest="40" HeightRequest=" 40" Aspect="AspectFit" />
+        <Image Grid.Row="0" Grid.Column="0" Source="set.png" WidthRequest="40" HeightRequest=" 40" VerticalOptions="Start" HorizontalOptions="Start"/>
         <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-            <Button x:Name="EnableNotificationBtn" Text="更改背景" Clicked="ChangeBackground_Clicked" />
+            <Button x:Name="Logout" Text="登出" Clicked="Logout_Clicked" />
         </StackLayout>
 
-        <!-- Row 1 -->
         <Image Grid.Row="1" Grid.Column="0" Source="help.png" WidthRequest="40" HeightRequest=" 40" Aspect="AspectFit" />
         <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
             <Button Text="回報問題" Clicked="ReportIssue_Clicked" />

@@ -18,9 +18,6 @@
     <ShellContent Title="記帳首頁"
                          Icon="pencil.png"
                          ContentTemplate="{DataTemplate views:HomePage}" />
-    <ShellContent Title="財務報表"
-                          Icon="money.png"
-                          ContentTemplate="{DataTemplate views:FinancePage}"/>
     <ShellContent Title="功能設定"
                           Icon="set.png"
                           ContentTemplate="{DataTemplate views:SetPage}"/>

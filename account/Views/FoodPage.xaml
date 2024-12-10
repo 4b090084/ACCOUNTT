@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="account.Views.FoodPage"
              Title="">
-    <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*,*">
-        <Label  x:Name="txtPoint"  Text="點數" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
-        <Label  x:Name="txtScore"  Text="分數" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
+    <Grid RowDefinitions="*,*,*,*,*,*,*" ColumnDefinitions="*,*">
+     
         <Image Source="brocoli.png" Grid.Row="1" Grid.Column="0"  x:Name="Brocoli" />
         <Label Text="1積分" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" />
 
@@ -19,6 +18,6 @@
         <Label Text="4積分" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" />
 
         <Image Source="kiwi.png" Grid.Row="5" Grid.Column="0" x:Name="Kiwi" />
-        <Label Text="5積分" Grid.Row="6" Grid.Column="0" HorizontalOptions="Center" />
+        <Label Text="5積分" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" />
     </Grid>
 </ContentPage>

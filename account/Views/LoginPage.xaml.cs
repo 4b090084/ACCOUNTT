@@ -12,6 +12,14 @@ public partial class LoginPage : ContentPage
 	{
 		InitializeComponent();
         _firebaseClient = firebaseClient;
+        checkLoin();
+    }
+    private async void checkLoin()
+    {
+        if (Preferences.ContainsKey("UID"))
+        {
+            await Shell.Current.GoToAsync("HomePage");
+        }
     }
     //跳轉至註冊頁面
     private async void Register_Clicked(object sender, EventArgs e)

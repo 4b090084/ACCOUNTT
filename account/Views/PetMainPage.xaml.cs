@@ -22,11 +22,12 @@ public partial class PetMainPage : ContentPage
         UPoint = Preferences.Get("UPoint", 0);
         ULevel = Preferences.Get("ULevel", 0);
 
-        txtLevel.Text = "等级:"+ ULevel.ToString(); 
+        txtLevel.Text = "等级:"+ ULevel.ToString();
+        txtScore.Text = "分數:" + UScore.ToString();
+        txtPoint.Text = "點數:" + UPoint.ToString();
         UpdateAccessoryDisplay();
         UpdatePetImage();
     }
-
 
 
     private async Task LoadUserDataFromFirebase()
@@ -34,7 +35,7 @@ public partial class PetMainPage : ContentPage
         try
         {
             var userData = await _firebaseClient
-                .Child("users")
+                .Child("Users")
                 .Child(UID)
                 .OnceSingleAsync<UserData>();
 
@@ -70,7 +71,7 @@ public partial class PetMainPage : ContentPage
             };
 
             await _firebaseClient
-                .Child("users")
+                .Child("Users")
                 .Child(UID)
                 .PutAsync(userData);
         }
@@ -82,10 +83,17 @@ public partial class PetMainPage : ContentPage
 
     protected override  async void OnAppearing()
     {
-        base.OnAppearing();
-        await LoadUserDataFromFirebase();
+        UID = Preferences.Get("UID", "");
+        UScore = Preferences.Get("UScore", 0);
+        UPoint = Preferences.Get("UPoint", 0);
+        ULevel = Preferences.Get("ULevel", 0);
+
+        txtLevel.Text = "等级:" + ULevel.ToString();
+        txtScore.Text = "分數:" + UScore.ToString();
+        //base.OnAppearing();
+        //await LoadUserDataFromFirebase();
         UpdateAccessoryDisplay();
-        UpdateScoreDisplay();
+        //UpdateScoreDisplay();
         UpdatePetImage(); // 每次頁面出現時更新寵物圖片
     }
 
@@ -94,33 +102,68 @@ public partial class PetMainPage : ContentPage
     {
         int currentScore = ScoreManager.Instance.Score;
 
-        // 根據積分決定顯示的圖片
+        // 根據積分決定顯示的圖片和升級
         if (currentScore >= 200)
         {
+            // 當分數達到200時升級
+            if (ULevel < 5)  // 限制最大等級為5
+            {
+                ULevel++;
+                Preferences.Set("ULevel", ULevel);
+                txtLevel.Text = "等级:" + ULevel.ToString();
+            }
             PetImage.Source = "chicken.png";
-            PetImage.WidthRequest = 150;  // 可以根據需要調整大小
+            PetImage.WidthRequest = 150;
             PetImage.HeightRequest = 150;
         }
         else if (currentScore >= 180)
         {
+            // 當分數達到180時升級
+            if (ULevel < 4)  // 限制最大等級為4
+            {
+                ULevel++;
+                Preferences.Set("ULevel", ULevel);
+                txtLevel.Text = "等级:" + ULevel.ToString();
+            }
             PetImage.Source = "hat.png";
             PetImage.WidthRequest = 150;
             PetImage.HeightRequest = 150;
         }
         else if (currentScore >= 150)
         {
+            // 當分數達到150時升級
+            if (ULevel < 3)  // 限制最大等級為3
+            {
+                ULevel++;
+                Preferences.Set("ULevel", ULevel);
+                txtLevel.Text = "等级:" + ULevel.ToString();
+            }
             PetImage.Source = "key.png";
             PetImage.WidthRequest = 150;
             PetImage.HeightRequest = 150;
         }
         else if (currentScore >= 100)
         {
+            // 當分數達到100時升級
+            if (ULevel < 2)  // 限制最大等級為2
+            {
+                ULevel++;
+                Preferences.Set("ULevel", ULevel);
+                txtLevel.Text = "等级:" + ULevel.ToString();
+            }
             PetImage.Source = "yellowhat.png";
             PetImage.WidthRequest = 150;
             PetImage.HeightRequest = 150;
         }
         else
         {
+            // 初始等級
+            if (ULevel < 1)  // 限制最大等級為1
+            {
+                ULevel = 1;
+                Preferences.Set("ULevel", ULevel);
+                txtLevel.Text = "等级:" + ULevel.ToString();
+            }
             PetImage.Source = "egg.png";
             PetImage.WidthRequest = 150;
             PetImage.HeightRequest = 150;
@@ -179,7 +222,7 @@ public partial class PetMainPage : ContentPage
 
     private async void UpdateScoreDisplay()
     {
-        ConditionEntry.Text = $"Score: {ScoreManager.Instance.Score}";
+        txtScore.Text = $"Score: {ScoreManager.Instance.Score}";
         // 每次更新分數時同步到 Firebase
         await SaveUserDataToFirebase();
     }

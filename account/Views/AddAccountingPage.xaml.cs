@@ -9,6 +9,7 @@ public partial class AddAccountingPage : ContentPage
     private readonly FirebaseClient _firebaseClient;
     private readonly List<string> expenseCategories = new List<string> { "食", "衣", "住", "行", "育", "樂" };
     private readonly List<string> incomeCategories = new List<string> { "薪水", "父母", "獎金" };
+    string UID = Preferences.Get("UID", "");
 
     int UPoint = 0;
     public AddAccountingPage(FirebaseClient firebaseClient)
@@ -16,7 +17,6 @@ public partial class AddAccountingPage : ContentPage
 		InitializeComponent();
         DatePicker.Date = DateTime.Now;  // 設置默認日期為今天
         _firebaseClient = firebaseClient;
-
         UPoint = Preferences.Get("UPoint", 0);
     }
 
@@ -49,15 +49,16 @@ public partial class AddAccountingPage : ContentPage
         {
             // 將記帳事件保存到 Firebase
             await _firebaseClient
-                .Child("AEvents")
+                .Child("AEvents/"+UID)
                 .PostAsync(accountingEvent);
             await DisplayAlert("成功", "記帳事件已添加到 Firebase", "確定");
+             
 
             //點數增加
             UPoint += 1;
             //將點數讀回資料庫
             Preferences.Set("UPoint", UPoint);
-
+            
             string Key = Preferences.Get("Key", "");
             await _firebaseClient
               .Child("Users")

@@ -24,6 +24,18 @@ namespace account
             //設定Firebase資料庫網址並連線
             builder.Services.AddSingleton(new FirebaseClient("https://chicken-7bab7-default-rtdb.firebaseio.com/"));
             //設定需要使用資料庫連線的頁面
+            builder.Services.AddSingleton<AllAccountingPage>();
+            builder.Services.AddSingleton<AppSetPage>();
+            builder.Services.AddSingleton<CalculatorPage>();
+            builder.Services.AddSingleton<DiAccountPage>();
+            builder.Services.AddSingleton<FAQPage>();
+            builder.Services.AddSingleton<FinancePage>();
+            builder.Services.AddSingleton<HelpPage>();
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<IncreasePage>();
+            builder.Services.AddSingleton<SetPage>();
+            builder.Services.AddSingleton<SortPage>();
+
             builder.Services.AddSingleton<RegisterPage>();
             builder.Services.AddSingleton<LoginPage>();
             builder.Services.AddSingleton<AddAccountingPage>();

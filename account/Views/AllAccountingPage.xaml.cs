@@ -4,7 +4,6 @@ using Firebase.Database.Query;
 using account.Models;
 using System.Collections.ObjectModel;
 
-
 public partial class AllAccountingPage : ContentPage
 {
     //存放所有記事的資料集
@@ -46,5 +45,22 @@ public partial class AllAccountingPage : ContentPage
     private async void AddAccounting_Clicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("AddAccountingPage");
+    }
+
+    //當點選記帳資料時，導向到記帳修改頁面
+    private async void Accounting_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.Count != 0)
+        {
+            // 取得選擇的記事
+            AddAccounting accounting = (AddAccounting)e.CurrentSelection[0];
+
+            //設定傳遞的參數
+            var navigationParameter = new Dictionary<string, object> { { "AccountingSelected", accounting } };
+
+            //開啟編輯記事頁面並傳遞參數
+            await Shell.Current.GoToAsync($"EditAccountingPage", navigationParameter);
+
+        }
     }
 }

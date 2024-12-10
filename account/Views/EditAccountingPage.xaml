@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="account.Views.EditAccountingPage"
+             Title="記帳資料修改">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <!-- 類型選擇 -->
+            <Picker x:Name="TypePicker" Title="類型" SelectedIndexChanged="TypeChanged" SelectedItem="{Binding Type}"> 
+                <Picker.Items>
+                    <x:String>支出</x:String>
+                    <x:String>收入</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- 日期選擇 -->
+            <DatePicker x:Name="DatePicker" Date="{Binding Date}" />
+
+            <!-- 類別選擇 -->
+            <Picker x:Name="CategoryPicker" Title="類別" IsEnabled="True" SelectedItem="{Binding Category}">
+            </Picker>
+
+            <!-- 金額輸入 -->
+            <Entry x:Name="AmountEntry" 
+               Placeholder="金額" 
+               Keyboard="Numeric" 
+               IsEnabled="True"
+               Text="{Binding Amount}"
+               />
+
+            <!-- 備註輸入 -->
+            <Editor x:Name="NoteEditor" 
+                Placeholder="備註" 
+                HeightRequest="100" 
+                Text="{Binding Note}"
+                    />
+
+            <!-- 儲存按鈕 -->
+            <Button Text="儲存"
+                Clicked="SaveClicked"
+                BackgroundColor="#007AFF"
+                TextColor="White" />
+
+            <Button Text="刪除"
+                    Clicked="DeleteClicked"
+                    BackgroundColor="Red"
+                    TextColor="White"/>
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

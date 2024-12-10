@@ -13,6 +13,7 @@
                 Margin="20"
                 SelectionMode="Single"
                 ItemsSource="{Binding AccountingList}"
+                SelectionChanged="Accounting_SelectionChanged"
                 >
 
         <!-- 每一項目的佈局方式: 垂直, 間距10 -->

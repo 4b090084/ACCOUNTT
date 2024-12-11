@@ -39,6 +39,7 @@ public partial class AllAccountingPage : ContentPage
         foreach (var item in result)
         {
             AccountingList.Add(item.Object);
+            AccountingList.Last().Key = item.Key.ToString();//設定記帳資料的KEY值
         }
     
     }

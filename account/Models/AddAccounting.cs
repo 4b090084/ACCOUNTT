@@ -8,6 +8,7 @@ namespace account.Models
 {
     public class AddAccounting
     {
+        public string Key { get; set; }
         public string? Type { get; set; }
         public decimal? Amount { get; set; }
         public DateTime Date { get; set; }

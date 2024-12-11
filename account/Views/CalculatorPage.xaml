@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="account.Views.CalculatorPage"
+             Title="計算機">
+    <!--在這裡實現計算機元素-->
+
+    <Grid RowDefinitions="Auto,*,*,*,*,*" ColumnDefinitions="*,*,*,*" Padding="10">
+        <Label x:Name="resultText" Grid.ColumnSpan="4" FontSize="36" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+
+        <Button Text="7" Grid.Row="1" Grid.Column="0" Clicked="OnNumberClicked"/>
+        <Button Text="8" Grid.Row="1" Grid.Column="1" Clicked="OnNumberClicked"/>
+        <Button Text="9" Grid.Row="1" Grid.Column="2" Clicked="OnNumberClicked"/>
+        <Button Text="/" Grid.Row="1" Grid.Column="3" Clicked="OnOperatorClicked"/>
+
+        <Button Text="4" Grid.Row="2" Grid.Column="0" Clicked="OnNumberClicked"/>
+        <Button Text="5" Grid.Row="2" Grid.Column="1" Clicked="OnNumberClicked"/>
+        <Button Text="6" Grid.Row="2" Grid.Column="2" Clicked="OnNumberClicked"/>
+        <Button Text="*" Grid.Row="2" Grid.Column="3" Clicked="OnOperatorClicked"/>
+
+        <Button Text="1" Grid.Row="3" Grid.Column="0" Clicked="OnNumberClicked"/>
+        <Button Text="2" Grid.Row="3" Grid.Column="1" Clicked="OnNumberClicked"/>
+        <Button Text="3" Grid.Row="3" Grid.Column="2" Clicked="OnNumberClicked"/>
+        <Button Text="-" Grid.Row="3" Grid.Column="3" Clicked="OnOperatorClicked"/>
+
+        <Button Text="C" Grid.Row="4" Grid.Column="0" Clicked="OnClearClicked"/>
+        <Button Text="0" Grid.Row="4" Grid.Column="1" Clicked="OnNumberClicked"/>
+        <Button Text="=" Grid.Row="4" Grid.Column="2" Clicked="OnEqualsClicked"/>
+        <Button Text="+" Grid.Row="4" Grid.Column="3" Clicked="OnOperatorClicked"/>
+    </Grid>
+</ContentPage>

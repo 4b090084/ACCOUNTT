@@ -14,8 +14,8 @@ public partial class FoodPage : ContentPage
     private int chestnutPoints = 3;
     private int chipsPoints = 4;
     private int kiwiPoints = 5;
-    private string UID;
-    private int UPoint,UScore ;
+    private string Key, UID, UName, UPwd;
+    private int UScore, UPoint, ULevel;
     private Register currentUser;
     public FoodPage(FirebaseClient firebaseClient)
 	{ 
@@ -23,9 +23,6 @@ public partial class FoodPage : ContentPage
 		InitializeComponent();
         SetupEventHandlers();
         LoadCurrentUserData();   
-        UID = Preferences.Get("UID", "");
-        UPoint = Preferences.Get("UPoint", 0);   
-        UScore = Preferences.Get("UScore", 0);
     }
 
     private void SetupEventHandlers()
@@ -47,17 +44,29 @@ public partial class FoodPage : ContentPage
         try
         {
             string key = Preferences.Get("Key", "");
-
+            currentUser.Key = key;
+            currentUser.UID = UID;
+            currentUser.UName = UName;
+            currentUser.UPwd = UPwd;
+            currentUser.UScore = UScore;
+            currentUser.UPoint = UPoint;
+            currentUser.ULevel = ULevel;
             var userData = await _firebaseClient
                 .Child("Users")
-                .Child(key)
-                .OnceSingleAsync<UserData>();
+                .Child(currentUser.Key)
+                .PutAsync<UserData>();
 
             if (userData != null)
             {
                 // 更新本地數據
                 ScoreManager.Instance.Score = userData.Score;
+                Preferences.Set("Key", Key);
+                Preferences.Set("UID", UID);
+                Preferences.Set("UName", UName);
+                Preferences.Set("UPwd", UPwd);
+                Preferences.Set("UScore", UScore);
                 Preferences.Set("UPoint", UPoint);
+                Preferences.Set("ULevel", ULevel);
             }
         }
         catch (Exception ex)

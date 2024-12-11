@@ -90,6 +90,7 @@ public partial class PetMainPage : ContentPage
 
         txtLevel.Text = "等级:" + ULevel.ToString();
         txtScore.Text = "分數:" + UScore.ToString();
+        txtPoint.Text = "點數:" + UPoint.ToString();
         //base.OnAppearing();
         //await LoadUserDataFromFirebase();
         UpdateAccessoryDisplay();
@@ -113,8 +114,8 @@ public partial class PetMainPage : ContentPage
                 txtLevel.Text = "等级:" + ULevel.ToString();
             }
             PetImage.Source = "chicken.png";
-            PetImage.WidthRequest = 150;
-            PetImage.HeightRequest = 150;
+            PetImage.WidthRequest = 200;
+            PetImage.HeightRequest = 200;
         }
         else if (currentScore >= 180)
         {
@@ -125,9 +126,9 @@ public partial class PetMainPage : ContentPage
                 Preferences.Set("ULevel", ULevel);
                 txtLevel.Text = "等级:" + ULevel.ToString();
             }
-            PetImage.Source = "hat.png";
-            PetImage.WidthRequest = 150;
-            PetImage.HeightRequest = 150;
+            PetImage.Source = "eba.png";
+            PetImage.WidthRequest = 200;
+            PetImage.HeightRequest = 200;
         }
         else if (currentScore >= 150)
         {
@@ -138,9 +139,9 @@ public partial class PetMainPage : ContentPage
                 Preferences.Set("ULevel", ULevel);
                 txtLevel.Text = "等级:" + ULevel.ToString();
             }
-            PetImage.Source = "key.png";
-            PetImage.WidthRequest = 150;
-            PetImage.HeightRequest = 150;
+            PetImage.Source = "ch.png";
+            PetImage.WidthRequest = 200;
+            PetImage.HeightRequest = 200;
         }
         else if (currentScore >= 100)
         {
@@ -151,9 +152,9 @@ public partial class PetMainPage : ContentPage
                 Preferences.Set("ULevel", ULevel);
                 txtLevel.Text = "等级:" + ULevel.ToString();
             }
-            PetImage.Source = "yellowhat.png";
-            PetImage.WidthRequest = 150;
-            PetImage.HeightRequest = 150;
+            PetImage.Source = "ec.png";
+            PetImage.WidthRequest = 200;
+            PetImage.HeightRequest = 200;
         }
         else
         {
@@ -165,8 +166,8 @@ public partial class PetMainPage : ContentPage
                 txtLevel.Text = "等级:" + ULevel.ToString();
             }
             PetImage.Source = "egg.png";
-            PetImage.WidthRequest = 150;
-            PetImage.HeightRequest = 150;
+            PetImage.WidthRequest = 200;
+            PetImage.HeightRequest = 200;
         }
 
         // 每次更新寵物圖片時同步到 Firebase

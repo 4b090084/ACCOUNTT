@@ -16,18 +16,23 @@ public partial class ShopPage : ContentPage
             { "witchhat.png", 20 },
             { "flower.png", 30 },
             { "stick.png", 40 },
-            { "yellowhat.png", 1 }
+            { "yellowhat.png", 60 }
         };
-    private string UID;
-    private int UScore;
-    private Register currentUser;
+    private string Key, UID, UName, UPwd;
+    private int UScore, UPoint, ULevel;//拿出全部資料food頁面一樣更改
+    
     public ShopPage(FirebaseClient firebaseClient)
 	{
         _firebaseClient = firebaseClient;
         InitializeComponent();
         SetupEventHandlers();
+        Key = Preferences.Get("Key", "");
         UID = Preferences.Get("UID", "");
+        UName = Preferences.Get("UName", "");
+        UPwd = Preferences.Get("UPwd", "");
         UScore = Preferences.Get("UScore", 0);
+        UPoint = Preferences.Get("UPoint", 0);
+        ULevel = Preferences.Get("ULevel", 0);
     }
 
     private void SetupEventHandlers()
@@ -57,14 +62,22 @@ public partial class ShopPage : ContentPage
                 // 更新本地存儲的分數
                 Preferences.Set("UScore", UScore);
                 // 更新 Firebase 用戶資料
-                if (currentUser != null)
-                {
-                    currentUser.UScore = UScore;
-                    await _firebaseClient
-                        .Child("Users")
-                        .Child(currentUser.UID)
-                        .PutAsync(currentUser);
-                }
+                Register currentUser = new Register();
+                string key = Preferences.Get("Key", "");
+                currentUser.Key = key;
+                currentUser.UID = UID;
+                currentUser.UName = UName;
+                currentUser.UPwd = UPwd;     
+                currentUser.UScore = UScore;
+                currentUser.UPoint  = UPoint;
+                currentUser.ULevel = ULevel;
+           
+                //拿出全部資料food頁面一樣更改
+                await _firebaseClient
+                    .Child("Users")
+                    .Child(currentUser.Key)
+                    .PutAsync(currentUser);  //改成修改資料庫
+
 
                 // 添加換裝邏輯
                 AccessoryManager.Instance.AddAccessory(itemName);

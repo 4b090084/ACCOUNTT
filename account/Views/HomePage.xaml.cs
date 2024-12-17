@@ -1,13 +1,16 @@
 //using Windows.UI.ApplicationSettings;
 namespace account.Views;
 using System;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
+    private readonly FirebaseClient _firebaseClient;
+    public HomePage(FirebaseClient firebaseClient)
 	{
 		InitializeComponent();
-
+        _firebaseClient = firebaseClient;
         string UName = Preferences.Get("UName", "沒有登入姓名");
         txtUName.Text = UName;
 

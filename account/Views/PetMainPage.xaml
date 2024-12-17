@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="account.Views.PetMainPage"
+             BackgroundImageSource="pbg2,png"
              Title="">
     <StackLayout Padding="10" Spacing="20" >
         <!-- 頂部的4列Grid -->
@@ -40,7 +41,7 @@
                 </Grid.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <Image Source="food.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" />
-                    <Label Text="餵養" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
+                    <Label Text="食物" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" />
                 </StackLayout>
             </Grid>
 
@@ -78,8 +79,9 @@
                 </Image.GestureRecognizers>
             </Image>
         </Grid>
-
-        <!-- 下方的3列Grid -->
+    </StackLayout>
+</ContentPage>
+        <!-- 下方的3列Grid --><!--
         <Grid RowSpacing="10" ColumnSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -90,7 +92,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- 设置按钮 -->
+            --><!-- 设置按钮 --><!--
             <Grid Grid.Row="0" Grid.Column="0">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SettingsButton_Click" />
@@ -100,7 +102,7 @@
                 </StackLayout>
             </Grid>
 
-            <!-- 帮助按钮 -->
+            --><!-- 帮助按钮 --><!--
             <Grid Grid.Row="0" Grid.Column="1">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="HelpButton_Click" />
@@ -110,7 +112,7 @@
                 </StackLayout>
             </Grid>
 
-            <!-- 回首頁按钮 -->
+            --><!-- 回首頁按钮 --><!--
             <Grid Grid.Row="0" Grid.Column="2">
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Tapped="HomeButton_Click" />
@@ -118,7 +120,5 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <Image Source="home.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center" />
                 </StackLayout>
-            </Grid>
-        </Grid>
-    </StackLayout>
-</ContentPage>
+            </Grid>-->
+ 

@@ -192,34 +192,7 @@ public partial class PetMainPage : ContentPage
         }
     }
 
-    private async void OnAccessoryTapped(object sender, EventArgs e)
-    {
-        var accessories = AccessoryManager.Instance.GetOwnedAccessories();
-        if (accessories.Count == 0)
-        {
-            await DisplayAlert("提示", "您還沒有購買任何裝飾品", "確定");
-            return;
-        }
-
-        var options = new List<string>(accessories);
-        options.Add("移除裝飾品");
-
-        string selected = await DisplayActionSheet("選擇裝飾品", "取消", null, options.ToArray());
-
-        if (selected == "移除裝飾品")
-        {
-            AccessoryManager.Instance.RemoveCurrentAccessory();
-            AccessoryImage.IsVisible = false;
-        }
-        else if (selected != null && selected != "取消")
-        {
-            AccessoryManager.Instance.EquipAccessory(selected);
-            UpdateAccessoryDisplay();
-        }
-
-        // 保存裝飾品更改到 Firebase
-        await SaveUserDataToFirebase();
-    }
+  
 
     private async void UpdateScoreDisplay()
     {
@@ -252,6 +225,35 @@ public partial class PetMainPage : ContentPage
         await Shell.Current.GoToAsync("FoodPage");
         UpdatePetImage(); // 餵食後更新寵物圖片
         UpdateScoreDisplay(); // 更新積分顯示
+    }
+
+    private async void OnAccessoryTapped(object sender, TappedEventArgs e)
+    {
+        var accessories = AccessoryManager.Instance.GetOwnedAccessories();
+        if (accessories.Count == 0)
+        {
+            await DisplayAlert("提示", "您還沒有購買任何裝飾品", "確定");
+            return;
+        }
+
+        var options = new List<string>(accessories);
+        options.Add("移除裝飾品");
+
+        string selected = await DisplayActionSheet("選擇裝飾品", "取消", null, options.ToArray());
+
+        if (selected == "移除裝飾品")
+        {
+            AccessoryManager.Instance.RemoveCurrentAccessory();
+            AccessoryImage.IsVisible = false;
+        }
+        else if (selected != null && selected != "取消")
+        {
+            AccessoryManager.Instance.EquipAccessory(selected);
+            UpdateAccessoryDisplay();
+        }
+
+        // 保存裝飾品更改到 Firebase
+        await SaveUserDataToFirebase();
     }
 
     private async void ShopButton_Click(object sender, TappedEventArgs e)

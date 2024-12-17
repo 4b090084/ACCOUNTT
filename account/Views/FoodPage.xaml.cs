@@ -22,7 +22,14 @@ public partial class FoodPage : ContentPage
         _firebaseClient = firebaseClient;
 		InitializeComponent();
         SetupEventHandlers();
-        LoadCurrentUserData();   
+
+        Key = Preferences.Get("Key", "");
+        UID = Preferences.Get("UID", "");
+        UName = Preferences.Get("UName", "");
+        UPwd = Preferences.Get("UPwd", "");
+        UScore = Preferences.Get("UScore", 0);
+        UPoint = Preferences.Get("UPoint", 0);
+        ULevel = Preferences.Get("ULevel", 0);
     }
 
     private void SetupEventHandlers()
@@ -39,10 +46,11 @@ public partial class FoodPage : ContentPage
         return new TapGestureRecognizer { Command = new Command(() => handler(this, EventArgs.Empty)) };
     }
 
-       private async void LoadCurrentUserData()
+       private async void UpdateCurrentUserData()
       {
         try
         {
+            Register currentUser = new Register();
             string key = Preferences.Get("Key", "");
             currentUser.Key = key;
             currentUser.UID = UID;
@@ -51,23 +59,10 @@ public partial class FoodPage : ContentPage
             currentUser.UScore = UScore;
             currentUser.UPoint = UPoint;
             currentUser.ULevel = ULevel;
-            var userData = await _firebaseClient
+          await _firebaseClient
                 .Child("Users")
                 .Child(currentUser.Key)
-                .PutAsync<UserData>();
-
-            if (userData != null)
-            {
-                // 更新本地數據
-                ScoreManager.Instance.Score = userData.Score;
-                Preferences.Set("Key", Key);
-                Preferences.Set("UID", UID);
-                Preferences.Set("UName", UName);
-                Preferences.Set("UPwd", UPwd);
-                Preferences.Set("UScore", UScore);
-                Preferences.Set("UPoint", UPoint);
-                Preferences.Set("ULevel", ULevel);
-            }
+                .PutAsync(currentUser);
         }
         catch (Exception ex)
         {
@@ -123,18 +118,14 @@ public partial class FoodPage : ContentPage
                 Preferences.Set("UScore", UScore);
 
                 // 更新 Firebase 用戶資料
-                if (currentUser != null)
-                {
-                    currentUser.UPoint = UPoint;
-                    currentUser.UScore = UScore;
-                    await Shell.Current.GoToAsync("..");
-                    //await FirebaseManager.UpdateUserData(currentUser);
-                }
-
-
+                UpdateCurrentUserData();
 
                 // 顯示兌換成功訊息
                 await DisplayAlert("兌換成功", $"您已成功兌換 {itemName}\n獲得 {pointCost} 分", "確定");
+
+                await Shell.Current.GoToAsync("..");
+
+
             }
             else
             {

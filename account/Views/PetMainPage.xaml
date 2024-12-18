@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="account.Views.PetMainPage"
-             BackgroundImageSource="pbg2,png"
+             BackgroundColor="LightYellow"
              Title="">
     <StackLayout Padding="10" Spacing="20" >
         <!-- 頂部的4列Grid -->

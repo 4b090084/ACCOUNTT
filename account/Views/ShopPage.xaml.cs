@@ -20,7 +20,8 @@ public partial class ShopPage : ContentPage
         };
     private string Key, UID, UName, UPwd;
     private int UScore, UPoint, ULevel;//拿出全部資料food頁面一樣更改
-    
+    private Register currentUser;
+
     public ShopPage(FirebaseClient firebaseClient)
 	{
         _firebaseClient = firebaseClient;

@@ -4,21 +4,24 @@
              x:Class="account.Views.FoodPage"
              BackgroundImageSource="pbg1.png"
              Title="">
-    <Grid RowDefinitions="*,*,*,*,*,*,*" ColumnDefinitions="*,*">
-     
-        <Image Source="brocoli.png" Grid.Row="1" Grid.Column="0"  x:Name="Brocoli" />
-        <Label Text="1積分" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" />
+    <Grid RowDefinitions="*,*,*,*,*,*,*,*" ColumnDefinitions="*,*">
 
-        <Image Source="carrots.png" Grid.Row="1" Grid.Column="1"  x:Name="Carrots" />
-        <Label Text="2積分" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" />
+        <Image Source="brocoli.png" Grid.Row="1" Grid.Column="0"  x:Name="Brocoli" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" />
+        <Label Text="1積分" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" TextColor="White"/>
+        
+        <Image Source="carrots.png" Grid.Row="1" Grid.Column="1"  x:Name="Carrots" WidthRequest="80" HeightRequest="80" VerticalOptions="Center"  />
+        <Label Text="2積分" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" TextColor="White" />
 
-        <Image Source="chestnut.png" Grid.Row="3" Grid.Column="0"  x:Name="Chestnut" />
-        <Label Text="3積分" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" />
+        <Image Source="chestnut.png" Grid.Row="3" Grid.Column="0"  x:Name="Chestnut"  WidthRequest="90" HeightRequest="90" VerticalOptions="Center" />
+        <Label Text="3積分" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" TextColor="White" />
 
-        <Image Source="chips.png" Grid.Row="3" Grid.Column="1"  x:Name="Chips" />
-        <Label Text="4積分" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" />
+        <Image Source="chips.png" Grid.Row="3" Grid.Column="1"  x:Name="Chips"  WidthRequest="120" HeightRequest="120" VerticalOptions="Center"/>
+        <Label Text="4積分" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" TextColor="White" />
 
-        <Image Source="kiwi.png" Grid.Row="5" Grid.Column="0" x:Name="Kiwi" />
-        <Label Text="5積分" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" />
+        <Image Source="kiwi.png" Grid.Row="5" Grid.Column="0" x:Name="Kiwi"   WidthRequest="100" HeightRequest="100" VerticalOptions="Center"/>
+        <Label Text="5積分" Grid.Row="6" Grid.Column="0" HorizontalOptions="Center" TextColor="White"/>
+
+        <Image Source="cake.png" Grid.Row="5" Grid.Column="1" x:Name="Cake" WidthRequest="150" HeightRequest="120" VerticalOptions="Center"/>
+        <Label Text="6積分" Grid.Row="6" Grid.Column="2" HorizontalOptions="Center" TextColor="White"/>
     </Grid>
 </ContentPage>

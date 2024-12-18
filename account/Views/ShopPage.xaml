@@ -2,21 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="account.Views.ShopPage"
-             BackgroundImageSource="sky.png"
+             BackgroundImageSource="orange.png"
              Title="">
     <VerticalStackLayout>
         <Grid RowDefinitions="*,*,*,*,*,*,*" ColumnDefinitions="*,*,*">
 
             <Image x:Name="hatImage" Source="hat.png" Grid.Row="0" Grid.Column="0" 
-                VerticalOptions="Center" HorizontalOptions="Center" />
+                VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="80" HeightRequest="80"/>
             <Label Text="$10" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" />
 
             <Image x:Name="flowerImage" Source="flower.png" Grid.Row="0" Grid.Column="1" 
-                VerticalOptions="Center" HorizontalOptions="Center" />
+                VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="80" HeightRequest="80" />
             <Label Text="$30" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" />
 
             <Image x:Name="greenHatImage" Source="greenhat.png" Grid.Row="0" Grid.Column="2" 
-                VerticalOptions="Center" HorizontalOptions="Center" />
+                VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="80" HeightRequest="80"/>
             <Label Text="$50" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Center" />
 
             <Image x:Name="stickImage" Source="stick.png" Grid.Row="1" Grid.Column="0" 

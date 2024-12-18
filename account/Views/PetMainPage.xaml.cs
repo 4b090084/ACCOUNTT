@@ -9,15 +9,19 @@ public partial class PetMainPage : ContentPage
 {
     private readonly FirebaseClient _firebaseClient;
     public static object Instance { get;  set; }
-    private string UID;
+    private string Key, UID, UName, UPwd;
     private int UScore, UPoint, ULevel;
+    private Register currentUser;
 
     public PetMainPage(FirebaseClient firebaseClient)
 	{
         InitializeComponent();
 
         _firebaseClient = firebaseClient;
+        Key = Preferences.Get("Key", "");
         UID = Preferences.Get("UID", "");
+        UName = Preferences.Get("UName", "");
+        UPwd = Preferences.Get("UPwd", "");
         UScore = Preferences.Get("UScore", 0);
         UPoint = Preferences.Get("UPoint", 0);
         ULevel = Preferences.Get("ULevel", 0);
@@ -63,27 +67,32 @@ public partial class PetMainPage : ContentPage
     {
         try
         {
-            var userData = new UserData
-            {
-                Score = ScoreManager.Instance.Score,
-                CurrentAccessory = AccessoryManager.Instance.CurrentAccessory,
-                OwnedAccessories = AccessoryManager.Instance.GetOwnedAccessories()
-            };
-
+            Register currentUser = new Register();
+            string key = Preferences.Get("Key", "");
+            currentUser.Key = key;
+            currentUser.UID = UID;
+            currentUser.UName = UName;
+            currentUser.UPwd = UPwd;
+            currentUser.UScore = UScore;
+            currentUser.UPoint = UPoint;
+            currentUser.ULevel = ULevel;
             await _firebaseClient
-                .Child("Users")
-                .Child(UID)
-                .PutAsync(userData);
+                  .Child("Users")
+                  .Child(currentUser.Key)
+                  .PutAsync(currentUser);
         }
         catch (Exception ex)
         {
-            await DisplayAlert("錯誤", "保存數據失敗: " + ex.Message, "確定");
+            await DisplayAlert("錯誤", "載入數據失敗: " + ex.Message, "確定");
         }
     }
 
     protected override  async void OnAppearing()
     {
+        Key = Preferences.Get("Key", "");
         UID = Preferences.Get("UID", "");
+        UName = Preferences.Get("UName", "");
+        UPwd = Preferences.Get("UPwd", "");
         UScore = Preferences.Get("UScore", 0);
         UPoint = Preferences.Get("UPoint", 0);
         ULevel = Preferences.Get("ULevel", 0);
@@ -101,76 +110,50 @@ public partial class PetMainPage : ContentPage
     // 根據積分更新寵物圖片的方法
     private  async void UpdatePetImage()
     {
-        int currentScore = ScoreManager.Instance.Score;
+        // 獲取當前分數
+        int UScore = Preferences.Get("UScore", 0);
 
-        // 根據積分決定顯示的圖片和升級
-        if (currentScore >= 200)
+        // 檢查分數門檻並更新等級和圖片
+        if (UScore >= 400)
         {
-            // 當分數達到200時升級
-            if (ULevel < 5)  // 限制最大等級為5
-            {
-                ULevel++;
-                Preferences.Set("ULevel", ULevel);
-                txtLevel.Text = "等级:" + ULevel.ToString();
-            }
+            ULevel = 5;
+            UScore -= 400;  // 扣除400分
             PetImage.Source = "chicken.png";
-            PetImage.WidthRequest = 200;
-            PetImage.HeightRequest = 200;
         }
-        else if (currentScore >= 180)
+        else if (UScore >= 300)
         {
-            // 當分數達到180時升級
-            if (ULevel < 4)  // 限制最大等級為4
-            {
-                ULevel++;
-                Preferences.Set("ULevel", ULevel);
-                txtLevel.Text = "等级:" + ULevel.ToString();
-            }
-            PetImage.Source = "eba.png";
-            PetImage.WidthRequest = 200;
-            PetImage.HeightRequest = 200;
+            ULevel = 4;
+            UScore -= 300;  // 扣除300分
+            PetImage.Source = "cba.png";
         }
-        else if (currentScore >= 150)
+        else if (UScore >= 200)
         {
-            // 當分數達到150時升級
-            if (ULevel < 3)  // 限制最大等級為3
-            {
-                ULevel++;
-                Preferences.Set("ULevel", ULevel);
-                txtLevel.Text = "等级:" + ULevel.ToString();
-            }
+            ULevel = 3;
+            UScore -= 200;  // 扣除200分
             PetImage.Source = "ch.png";
-            PetImage.WidthRequest = 200;
-            PetImage.HeightRequest = 200;
         }
-        else if (currentScore >= 100)
+        else if (UScore >= 100)
         {
-            // 當分數達到100時升級
-            if (ULevel < 2)  // 限制最大等級為2
-            {
-                ULevel++;
-                Preferences.Set("ULevel", ULevel);
-                txtLevel.Text = "等级:" + ULevel.ToString();
-            }
+            ULevel = 2;
+            UScore -= 100;  // 扣除100分
             PetImage.Source = "ec.png";
-            PetImage.WidthRequest = 200;
-            PetImage.HeightRequest = 200;
         }
         else
         {
-            // 初始等級
-            if (ULevel < 1)  // 限制最大等級為1
-            {
-                ULevel = 1;
-                Preferences.Set("ULevel", ULevel);
-                txtLevel.Text = "等级:" + ULevel.ToString();
-            }
+            ULevel = 1;
             PetImage.Source = "egg.png";
-            PetImage.WidthRequest = 200;
-            PetImage.HeightRequest = 200;
         }
 
-        // 每次更新寵物圖片時同步到 Firebase
+        // 更新界面顯示和保存設置
+        PetImage.WidthRequest = 200;
+        PetImage.HeightRequest = 200;
+
+        Preferences.Set("ULevel", ULevel);
+        Preferences.Set("UScore", UScore);
+        txtLevel.Text = "等级:" + ULevel.ToString();
+        txtScore.Text = "分數:" + UScore.ToString();
+
+        // 同步到Firebase數據庫
         await SaveUserDataToFirebase();
     }
 
